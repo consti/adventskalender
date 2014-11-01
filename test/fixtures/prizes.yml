@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sponsor_id: 
+  day_id: 
+  name: MyString
+
+two:
+  sponsor_id: 
+  day_id: 
+  name: MyString
