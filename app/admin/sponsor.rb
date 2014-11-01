@@ -21,7 +21,7 @@ ActiveAdmin.register Sponsor do
     actions
   end
 
-  form do |f|
+  form :html => { :enctype => "multipart/form-data" } do |f|
     f.semantic_errors
     f.inputs 'Sponsor' do
       f.input :name

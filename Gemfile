@@ -33,6 +33,7 @@ gem 'spring',        group: :development
 # Use unicorn as the app server
 gem 'unicorn'
 
+gem 'fog'
 gem 'carrierwave'
 gem 'mini_magick', '~> 4.0.0.rc'
 
