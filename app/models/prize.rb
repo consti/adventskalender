@@ -6,6 +6,8 @@ class Prize < ActiveRecord::Base
 
   has_many :kalenders
 
+  accepts_nested_attributes_for :kalenders
+
   def display_name
     [
       day.try(:name),

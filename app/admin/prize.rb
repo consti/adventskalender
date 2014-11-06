@@ -1,5 +1,5 @@
 ActiveAdmin.register Prize do
-  permit_params :sponsor_id, :day_id, :name
+  permit_params :sponsor_id, :day_id, :name, kalenders_attributes: [:number]
 
   index do
     id_column
@@ -22,6 +22,19 @@ ActiveAdmin.register Prize do
       )
     end
     actions
+  end
+
+  form do |f|
+    f.semantic_errors
+    f.inputs 'Prize' do
+      f.input :day
+      f.input :name
+      f.input :sponsor
+      f.has_many :kalenders, heading: 'Kalender (Gewinnnummern)' do |a|
+        a.input :number
+      end
+    end
+    f.actions
   end
 
 end
