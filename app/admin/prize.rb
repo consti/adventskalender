@@ -1,9 +1,10 @@
 ActiveAdmin.register Prize do
-  permit_params :sponsor_id, :day_id, :name
+  permit_params :sponsor_id, :day_id, :name, :anzahl
 
   index do
     id_column
     column :name
+    column :anzahl
     column :day do |object|
       link_to(
         object.day.name,
@@ -29,10 +30,12 @@ ActiveAdmin.register Prize do
     f.inputs 'Prize' do
       f.input :sponsor, as: :select, collection: Sponsor.all.order(name: :asc)
       f.input :day
+      f.input :anzahl,
+              as: :select,
+              collection: options_for_select([*1..20], f.object.anzahl),
+              include_blank: false
       f.input :name
     end
     f.actions
   end
-
-
 end
