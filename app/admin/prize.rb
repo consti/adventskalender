@@ -24,4 +24,15 @@ ActiveAdmin.register Prize do
     actions
   end
 
+  form do |f|
+    f.semantic_errors
+    f.inputs 'Prize' do
+      f.input :sponsor, as: :select, collection: Sponsor.all.order(name: :asc)
+      f.input :day
+      f.input :name
+    end
+    f.actions
+  end
+
+
 end
