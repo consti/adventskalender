@@ -1,5 +1,9 @@
 ActiveAdmin.register Prize do
-  permit_params :sponsor_id, :day_id, :name, :anzahl
+  permit_params :sponsor_id,
+                :day_id,
+                :name,
+                :anzahl,
+                kalenders_attributes: [:number]
 
   index do
     id_column
@@ -34,6 +38,9 @@ ActiveAdmin.register Prize do
               as: :select,
               collection: options_for_select([*1..20], f.object.anzahl),
               include_blank: false
+      f.has_many :kalenders, heading: 'Kalender (Gewinnnummern)' do |a|
+        a.input :number
+      end
       f.input :name
     end
     f.actions
