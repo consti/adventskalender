@@ -31,7 +31,8 @@ ActiveAdmin.register Prize do
 
   form do |f|
     f.semantic_errors
-    f.inputs 'Prize' do
+    f.inputs 'Preis' do
+      f.input :name
       f.input :sponsor, as: :select, collection: Sponsor.all.order(name: :asc)
       f.input :day
       f.input :anzahl,
@@ -41,7 +42,7 @@ ActiveAdmin.register Prize do
       f.has_many :kalenders, heading: 'Kalender (Gewinnnummern)' do |a|
         a.input :number
       end
-      f.input :name
+
     end
     f.actions
   end
