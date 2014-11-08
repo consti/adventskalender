@@ -1,6 +1,6 @@
 ActiveAdmin.register Sponsor do
 
-  permit_params :name, :person, :address, :city, :phone, :logo, :logo_cache
+  permit_params :name, :person, :address, :city, :phone, :logo, :logo_cache, :email
 
   index do
     id_column
@@ -9,6 +9,7 @@ ActiveAdmin.register Sponsor do
     column :address
     column :city
     column :phone
+    column :email
     column :logo do |object|
       image_tag(object.logo.url(:thumb))
     end
@@ -29,6 +30,7 @@ ActiveAdmin.register Sponsor do
       f.input :address
       f.input :city
       f.input :phone
+      f.input :email
       f.input :logo,
               as: :file,
               hint: if f.object.logo.present?
