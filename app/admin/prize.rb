@@ -46,4 +46,12 @@ ActiveAdmin.register Prize do
     end
     f.actions
   end
+
+  controller do
+    def create
+      create! do |format|
+        format.html { redirect_to action: :new } if resource.valid?
+      end
+    end
+  end
 end
