@@ -3,5 +3,6 @@ class HomeController < ApplicationController
   end
 
   def kalender
+    @days = Day.all
   end
 end
