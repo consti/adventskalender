@@ -1,4 +1,7 @@
 class HomeController < ApplicationController
-  def index
+  def placeholder
+  end
+
+  def kalender
   end
 end

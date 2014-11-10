@@ -11,20 +11,19 @@
  * file per style scope.
  *
  *= require 'normalize'
- *= require 'active_admin'
- *= require 'main'
  *= require_self
  */
 
 body {
   background-color: #eeeeee;
+  margin: 0;
+  padding: 0;
 }
 
 #calendar_wrapper {
   margin: 0 auto;
   padding: 15px;
-  min-width: 200px;
-  max-width: 920px;
+  width: 920px;
 }
 
 #placeholder {
@@ -41,4 +40,20 @@ body {
   position: absolute;
   right: 10px;
   top: -5px;
+}
+
+#kalender {
+  height: 621px;
+  width: 920px;
+  border: 0;
+  tr, td {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-spacing: 0;
+  }
+  .door {
+    outline: 1px solid black;
+  }
 }
