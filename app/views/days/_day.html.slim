@@ -1,2 +1,13 @@
-td.door
-  = image_tag(day.image, height: day.height, width: day.width)
+td.opened
+  .item style="height: #{day.height}px; width: #{day.width}px; z-index: #{zindex_from_filename(day.image)}"
+    .info-wrap style="height: #{day.height}px; width: #{day.width}px;"
+      .info-opened style="height: #{day.height}px; width: #{day.width}px;"
+        button class='winners' Gewinner anzeigen
+      .info style="height: #{day.height}px; width: #{day.width}px;"
+        .info-front
+          = image_tag(day.image, height: day.height, width: day.width)
+        .info-back
+          .info-back-sponsors
+            - day.sponsors.uniq.each do |sponsor|
+              - if sponsor.logo
+                = image_tag(sponsor.logo.url(:thumb))

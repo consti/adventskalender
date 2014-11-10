@@ -10,6 +10,9 @@ module DayHelper
         image_tag(image, height: height, width: width)
       end
     end
+  end
 
+  def zindex_from_filename(filename)
+    100 - filename.match(/(\d\d)\.jpg/)[1].to_i
   end
 end
