@@ -17,7 +17,7 @@ module DayHelper
   end
 
   def kalender_numbers(numbers)
-    numbers.map do |number|
+    numbers.sort.map do |number|
       content_tag('span', number, class: 'prize-number')
     end.join(', ').html_safe
   end
@@ -28,7 +28,9 @@ module DayHelper
                 sponsor.address,
                 sponsor.city,
                 "Tel.: #{sponsor.phone}"].join(", ")
-    contact += ";<br>Ihr Ansprechpartner: #{sponsor.person}" if sponsor.person.present?
+    if sponsor.person.present?
+      contact += ";<br>Ihr Ansprechpartner: #{sponsor.person}"
+    end
     contact.html_safe
   end
 end

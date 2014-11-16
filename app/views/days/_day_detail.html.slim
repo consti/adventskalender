@@ -6,7 +6,7 @@ ul#winners
         span.prize-name
           = prize.name
         span.prize-meta
-          - if prize.anzahl > 1
+          - if prize.kalenders.count > 1
             = " haben die Kalender mit den Nummern "
           - else
             = " hat der Kalender mit der Nummer "
