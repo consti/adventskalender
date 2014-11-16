@@ -3,7 +3,7 @@ class DaysController < ApplicationController
     @day = Day.opened.find(params[:id])
     respond_to do |format|
       format.js
-      # format.html
+      format.html
     end
   end
 end

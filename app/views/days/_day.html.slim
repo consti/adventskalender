@@ -1,7 +1,7 @@
 td.opened
-  .item style="height: #{day.height}px; width: #{day.width}px; z-index: #{zindex_from_filename(day.image)}"
+  = link_to day_path(:id => day.id), :remote => true, class: 'item', style: "height: #{day.height}px; width: #{day.width}px; z-index: #{zindex_from_filename(day.image)}" do
     .info-wrap style="height: #{day.height}px; width: #{day.width}px;"
-      =  link_to day_path(:id => day.id), :remote => true, class: 'info-opened', style: "height: #{day.height}px; width: #{day.width}px;"  do
+      .info-opened style= "height: #{day.height}px; width: #{day.width}px;"
         h3= day.date.day
         .info-opened-action
           button class='info-opened-day-winners' Gewinner anzeigen

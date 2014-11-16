@@ -1,1 +1,4 @@
-= render partial: 'day_detail', locals: { day: @day }
+#calendar_wrapper
+  #day.revealed
+    = link_to 'X', root_path, id: "day-close"
+    = render partial: 'day_detail', locals: { day: @day }
