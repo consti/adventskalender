@@ -2,14 +2,18 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
-  $(document).keydown (e)=>
+  $(document).keydown (e)->
     if e.keyCode == 27
       $('#day').fadeOut()
       $('#kalender').fadeIn()
 
-  $('.info-opened').click ->
-    $('#day').fadeIn()
-    $('#kalender').fadeOut()
+  $('html').click ->
+    $('#day').fadeOut()
+    $('#kalender').fadeIn()
+
+  $('#day').click (e)->
+    e.stopPropagation()
+
   $('#day-close').click ->
     $('#day').fadeOut()
     $('#kalender').fadeIn()
