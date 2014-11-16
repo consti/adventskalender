@@ -15,4 +15,8 @@ class Prize < ActiveRecord::Base
       name
     ].compact.join(' - ')
   end
+
+  def anzahl
+    super || 1
+  end
 end

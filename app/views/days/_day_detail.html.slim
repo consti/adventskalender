@@ -1,0 +1,26 @@
+h1#day-date= day.date.strftime('%d.%m.%y')
+ul#winners
+  - @day.prizes.each do |prize|
+    li#winners-item
+      p
+        span.prize-name
+          = prize.name
+        span.prize-meta
+          - if prize.anzahl > 1
+            = " haben die Kalender mit den Nummern "
+          - else
+            = " hat der Kalender mit der Nummer "
+        = kalender_numbers(prize.kalenders.map(&:number))
+        span.prize-meta= " gewonnen."
+      p
+        i= sponsor_contact(prize.sponsor)
+
+ul#sponsors
+  - perc = [(100 / @day.sponsors.uniq.count).round, 30].min
+  - remainer = 100 - (perc * @day.sponsors.uniq.count)
+  - if remainer > 5
+    li#sponsor-item style="width: #{ remainer / 2 }%"
+  - @day.sponsors.uniq.each do |sponsor|
+    li#sponsor-item style="background-image: url(#{ sponsor.logo.url(:prize) }); width: #{ perc }%"
+  - if remainer > 5
+    li#sponsor-item style="width: #{ remainer / 2 }%"
