@@ -6,7 +6,7 @@ module DayHelper
       day.width = width
       render day
     else
-      content_tag 'td', class: 'disabled' do
+      content_tag 'td', class: 'disabled', :"data-until" => (Date.parse(date) - Date.today).to_i do
         image_tag(image, height: height, width: width)
       end
     end

@@ -4,7 +4,7 @@ class Day < ActiveRecord::Base
   has_many :kalenders, through: :prizes
   has_many :sponsors,  through: :prizes
 
-  scope :opened, -> { where('date <= ?', Date.parse('24.12.2014')) }
+  scope :opened, -> { where('date <= ?', Date.parse('20.12.2014')) }
   attr_accessor :width, :height, :image, :position
 
   def name
