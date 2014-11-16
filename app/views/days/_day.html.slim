@@ -2,7 +2,9 @@ td.opened
   .item style="height: #{day.height}px; width: #{day.width}px; z-index: #{zindex_from_filename(day.image)}"
     .info-wrap style="height: #{day.height}px; width: #{day.width}px;"
       .info-opened style="height: #{day.height}px; width: #{day.width}px;"
-        button class='winners' Gewinner anzeigen
+        h3= day.date.day
+        .info-opened-action
+          button class='info-opened-day-winners' Gewinner anzeigen
       .info style="height: #{day.height}px; width: #{day.width}px;"
         .info-front
           = image_tag(day.image, height: day.height, width: day.width)

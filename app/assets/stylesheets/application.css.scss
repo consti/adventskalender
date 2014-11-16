@@ -65,13 +65,24 @@ body {
   font-size: 9px;
   overflow: hidden;
   display: table;
-  button.winners {
-    font-size: 10px;
-    display: block;
-    position: absolute;
-    top: 50%;
-    margin-top: -10px;
-    left: 10px;
+  color: #fff;
+  h3 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 30px;
+    padding: 40px 0 0 0;
+    margin: 0 0 15px 0;
+    text-align: center;
+    font-family:'Open Sans', Arial, sans-serif;
+    color: #000;
+  }
+  .info-opened-action {
+    text-align: center;
+    button.info-opened-day-winners {
+      font-size: 11px;
+      padding: 5px 4px;
+    }
+
   }
 }
 .item {
@@ -79,6 +90,9 @@ body {
     border-radius: 0%;
     position: relative;
     cursor: pointer;
+    .info-front {
+      background-color: #eeeeee;
+    }
 }
 .info-wrap {
     border-radius: 0%;
@@ -147,18 +161,6 @@ body {
         margin: 0 auto;
       }
     }
-}
-
-.info h3 {
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 14px;
-    margin: 0 15px;
-    padding: 40px 0 0 0;
-    height: 90px;
-    font-family:'Open Sans', Arial, sans-serif;
-    text-shadow: 0 0 1px #fff, 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .item:hover .info-wrap {
