@@ -24,7 +24,7 @@ module DayHelper
 
   def sponsor_contact(sponsor)
     contact = "Abzuholen bei: "
-    contact += [sponsor.name,
+    contact += [content_tag('b', sponsor.name),
                 sponsor.address,
                 sponsor.city,
                 "Tel.: #{sponsor.phone}"].join(", ")
