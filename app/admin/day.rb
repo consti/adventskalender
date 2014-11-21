@@ -10,7 +10,7 @@ ActiveAdmin.register Day do
       end.join('<br>').html_safe
     end
     column :prizes do |object|
-      object.prizes.map do |prize|
+      object.prizes.sort_by(&:sponsor_id).map do |prize|
         link_to(
           prize.name,
           admin_prize_path(prize)
@@ -18,7 +18,7 @@ ActiveAdmin.register Day do
       end.join('<br>').html_safe
     end
     column :sponsors do |object|
-      object.sponsors.map do |sponsor|
+      object.sponsors.sort_by(&:id).map do |sponsor|
         link_to(
           sponsor.name,
           admin_sponsor_path(sponsor)
