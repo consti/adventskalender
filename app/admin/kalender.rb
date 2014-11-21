@@ -22,4 +22,12 @@ ActiveAdmin.register Kalender do
     actions
   end
 
+
+  csv do
+    column(:datum) { |kalender| kalender.day.date }
+    column(:sponsor) { |kalender| kalender.sponsor.name }
+    column(:gewinn) { |kalender| kalender.prize.name }
+    column(:kalender) { |kalender| kalender.number }
+  end
+
 end

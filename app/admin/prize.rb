@@ -54,4 +54,12 @@ ActiveAdmin.register Prize do
       end
     end
   end
+
+  csv do
+    column(:datum) { |prize| prize.day.date }
+    column(:sponsor) { |prize| prize.sponsor.name }
+    column(:gewinn) { |prize| prize.name }
+    column(:gewinnanzahl) { |prize| prize.anzahl }
+    column(:kalenders) { |prize| prize.kalenders.map(&:number).join('; ') }
+  end
 end

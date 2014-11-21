@@ -28,4 +28,26 @@ ActiveAdmin.register Day do
     actions
   end
 
+  collection_action :download_gesamtliste, :method => :get do
+    days = Day.all.order(date: :asc).includes(:prizes, :kalenders, :sponsors)
+    liste = CSV.generate do |csv|
+      csv << [:tag, :sponsor, :gewinn, :anzahl, :kalender_nr]
+      days.each_with_index do |day, index|
+        day.prizes.each do |prize|
+          prize.anzahl.times do |i|
+            csv << [day.date, prize.sponsor.name, prize.name, prize.anzahl, prize.kalenders[i].try(:number)]
+          end
+        end
+      end
+    end
+    # send file to user
+    send_data(
+      liste,
+      type: 'text/csv; header=present',
+      disposition: "attachment; filename=gesamtliste.csv")
+  end
+
+  action_item only: :index do
+    link_to 'Gesamtliste herunterladen', params.merge(:action => :download_gesamtliste)
+  end
 end
