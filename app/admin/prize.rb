@@ -3,7 +3,7 @@ ActiveAdmin.register Prize do
                 :day_id,
                 :name,
                 :anzahl,
-                kalenders_attributes: [:number]
+                kalenders_attributes: [:number, :id]
 
   index do
     id_column
