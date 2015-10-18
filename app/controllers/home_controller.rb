@@ -3,6 +3,6 @@ class HomeController < ApplicationController
   end
 
   def kalender
-    @days = Day.all
+    @days = Day.year(ENV['YEAR'])
   end
 end

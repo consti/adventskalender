@@ -1,6 +1,6 @@
 module DayHelper
   def day_box(image: nil, date: nil, height: nil, width: nil)
-    if day = Day.opened.find_by(date: Date.parse(date))
+    if day = Day.year(ENV['YEAR']).opened.find_by(date: Date.parse(date))
       day.image = image
       day.height = height
       day.width = width

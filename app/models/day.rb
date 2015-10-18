@@ -4,6 +4,10 @@ class Day < ActiveRecord::Base
   has_many :kalenders, through: :prizes
   has_many :sponsors,  through: :prizes
 
+  scope :year, ->(year) {
+    where('EXTRACT(YEAR FROM days.date) = :year', year: year)
+  }
+
   scope :opened, -> {
     where('date <= ?', Time.now.in_time_zone('Berlin').to_date)
   }
