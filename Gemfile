@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
-ruby "2.1.5"
+ruby "2.2.3"
 
 gem 'dotenv-rails', :groups => [:development, :test]
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.5'
+gem 'rails', '4.2.4'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets

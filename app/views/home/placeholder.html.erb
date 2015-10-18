@@ -1,7 +1,7 @@
 <div id="calendar_wrapper">
   <div id="calendar">
-    <%= image_tag('adventskalender.jpg', id: 'placeholder') %>
-    <p id="description">Ab 1. Dezember sehen Sie hier den Lions Adventskalender 2014.
+    <%= image_tag("kalenders/#{ENV['YEAR']}/adventskalender.jpg", id: 'placeholder') %>
+    <p id="description">Ab 1. Dezember sehen Sie hier den Lions Adventskalender <%= ENV['YEAR'] %>.
       <%= image_tag('logo.png', id: 'logo') %></p>
   </div>
 </div>
