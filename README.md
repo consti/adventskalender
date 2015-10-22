@@ -14,7 +14,7 @@ Tempfiles:
 
 ```
 data = Tempfile.new('import.csv')
-data.write << <<-IMPORT
+data.write << <<IMPORT
 [copy and paste all your csv data]
 IMPORT
 data.close

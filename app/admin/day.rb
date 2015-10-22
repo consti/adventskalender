@@ -53,7 +53,7 @@ ActiveAdmin.register Day do
       disposition: "attachment; filename=gesamtliste.csv")
   end
 
-  action_item only: :index do
+  action_item(:gesamtliste_herunterladen, only: :index) do
     link_to 'Gesamtliste herunterladen', params.merge(:action => :download_gesamtliste)
   end
 end

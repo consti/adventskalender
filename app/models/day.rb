@@ -9,7 +9,11 @@ class Day < ActiveRecord::Base
   }
 
   scope :opened, -> {
-    where('date <= ?', Time.now.in_time_zone('Berlin').to_date)
+    if ENV['ALL_DOORS_OPEN'] && ENV['ALL_DOORS_OPEN'] == 'true'
+      where(nil)
+    else
+      where('date <= ?', Time.now.in_time_zone('Berlin').to_date)
+    end
   }
   attr_accessor :width, :height, :image, :position
 
