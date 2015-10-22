@@ -16,4 +16,11 @@ class Day < ActiveRecord::Base
   def name
     date.to_s
   end
+  def self.create_for_year(year)
+    start_date = Date.parse("01.12.#{year}")
+    end_date   = Date.parse("24.12.#{year}")
+    (start_date..end_date).each do |date|
+      Day.where(date: date).first_or_create
+    end
+  end
 end
