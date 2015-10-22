@@ -24,9 +24,7 @@ class Importer
   end
 
   def self.copy_logos!(year)
-    Sponsor.where(year: year, logo: nil).each do |sponsor|
-      sponsor.copy_logo!
-    end
+    Sponsor.where(year: year, logo: nil).each(&:copy_logo!)
   end
 
   def perform!
