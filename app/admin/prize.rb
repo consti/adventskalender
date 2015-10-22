@@ -3,7 +3,14 @@ ActiveAdmin.register Prize do
                 :day_id,
                 :name,
                 :anzahl,
+                :lions_member,
                 kalenders_attributes: [:number, :id]
+
+  (2014..Time.now.year).map(&:to_s).each do |year|
+    scope(year, default: (year == Time.now.year)) do |scope|
+      scope.year(year)
+    end
+  end
 
   index do
     id_column
@@ -26,6 +33,7 @@ ActiveAdmin.register Prize do
         admin_sponsor_path(object.sponsor)
       )
     end
+    column :lions_member
     actions
   end
 
@@ -42,7 +50,7 @@ ActiveAdmin.register Prize do
       f.has_many :kalenders, heading: 'Kalender (Gewinnnummern)' do |a|
         a.input :number
       end
-
+      f.input :lions_member
     end
     f.actions
   end

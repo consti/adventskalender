@@ -1,6 +1,12 @@
 ActiveAdmin.register Kalender do
   permit_params :prize_id, :number
 
+  (2014..Time.now.year).map(&:to_s).each do |year|
+    scope(year, default: (year == Time.now.year)) do |scope|
+      scope.year(year)
+    end
+  end
+
   index do
     id_column
     column :number
@@ -29,5 +35,4 @@ ActiveAdmin.register Kalender do
     column(:gewinn) { |kalender| kalender.prize.name }
     column(:kalender) { |kalender| kalender.number }
   end
-
 end

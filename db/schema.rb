@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108082104) do
+ActiveRecord::Schema.define(version: 20151022125839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "active_admin_comments", force: true do |t|
+  create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
     t.text     "body"
     t.string   "resource_id",   null: false
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20141108082104) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
-  create_table "admin_users", force: true do |t|
+  create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -49,13 +49,13 @@ ActiveRecord::Schema.define(version: 20141108082104) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "days", force: true do |t|
+  create_table "days", force: :cascade do |t|
     t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "kalenders", force: true do |t|
+  create_table "kalenders", force: :cascade do |t|
     t.integer  "number",     limit: 8
     t.integer  "prize_id"
     t.datetime "created_at"
@@ -64,19 +64,21 @@ ActiveRecord::Schema.define(version: 20141108082104) do
 
   add_index "kalenders", ["prize_id"], name: "index_kalenders_on_prize_id", using: :btree
 
-  create_table "prizes", force: true do |t|
+  create_table "prizes", force: :cascade do |t|
     t.integer  "sponsor_id"
     t.integer  "day_id"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "anzahl"
+    t.integer  "cost"
+    t.string   "lions_member"
   end
 
   add_index "prizes", ["day_id"], name: "index_prizes_on_day_id", using: :btree
   add_index "prizes", ["sponsor_id"], name: "index_prizes_on_sponsor_id", using: :btree
 
-  create_table "sponsors", force: true do |t|
+  create_table "sponsors", force: :cascade do |t|
     t.string   "name"
     t.string   "person"
     t.string   "address"
@@ -86,6 +88,8 @@ ActiveRecord::Schema.define(version: 20141108082104) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email"
+    t.string   "fax"
+    t.integer  "year"
   end
 
 end

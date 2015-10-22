@@ -6,7 +6,15 @@ class Prize < ActiveRecord::Base
 
   has_many :kalenders
 
+  scope :year, ->(year) {
+    joins(:day).
+      where('EXTRACT(YEAR FROM days.date) = :year', year: year)
+  }
+
+
   accepts_nested_attributes_for :kalenders
+
+  delegate :year, to: :day
 
   def display_name
     [

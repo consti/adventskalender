@@ -1,6 +1,12 @@
 ActiveAdmin.register Day do
   permit_params :date
 
+  (2014..Time.now.year).map(&:to_s).each do |year|
+    scope(year, default: (year == Time.now.year)) do |scope|
+      scope.year(year)
+    end
+  end
+
   index do
     id_column
     column :date
@@ -31,11 +37,11 @@ ActiveAdmin.register Day do
   collection_action :download_gesamtliste, :method => :get do
     days = Day.all.order(date: :asc).includes(:prizes, :kalenders, :sponsors)
     liste = CSV.generate do |csv|
-      csv << [:tag, :sponsor, :gewinn, :anzahl, :kalender_nr]
+      csv << [:jahr, :tag, :sponsor, :gewinn, :anzahl, :kalender_nr]
       days.each_with_index do |day, index|
         day.prizes.each do |prize|
           prize.anzahl.times do |i|
-            csv << [day.date, prize.sponsor.name, prize.name, prize.anzahl, prize.kalenders[i].try(:number)]
+            csv << [day.year, day.date, prize.sponsor.name, prize.name, prize.anzahl, prize.kalenders[i].try(:number)]
           end
         end
       end
