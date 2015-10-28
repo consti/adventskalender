@@ -54,3 +54,6 @@ gem 'activeadmin', github: 'activeadmin'
 # gem 'debugger', group: [:development, :test]
 
 gem 'rails_12factor', group: :production
+
+# Send mails using mailgun
+gem 'mailgun_rails'
