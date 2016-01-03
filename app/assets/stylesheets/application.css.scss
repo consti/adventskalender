@@ -21,6 +21,39 @@ body {
   padding: 0;
 }
 
+#all-winners-wrapper {
+  margin: 0 auto;
+  padding: 15px;
+  width: 920px;
+  position: relative;
+  #all-winners {
+    background-color: #FFF;
+    width: 100%;
+    border: 1px solid black;
+    thead {
+      tr th {
+        padding: 15px;
+      }
+    }
+    tbody {
+      tr {
+        margin-bottom: 10px;
+        &:nth-child(odd) {
+          background-color: #EEE;
+        }
+        td.number {
+          padding: 15px;
+          vertical-align: top;
+        }
+        td.prize {
+          padding: 15px;
+          vertical-align: top;
+        }
+      }
+    }
+  }
+}
+
 #winners {
   list-style: none;
   padding: 15px;

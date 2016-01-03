@@ -1,0 +1,14 @@
+#all-winners-wrapper
+  table#all-winners
+    thead
+      tr
+        th Kalender
+        th Preis
+    tbody
+      - Kalender.year(ENV['YEAR']).order(number: :asc).each do |kalender|
+        tr
+          td.number= kalender.number
+          td.prize
+            = kalender.prize.name
+            p
+              i= sponsor_contact(kalender.prize.sponsor)
