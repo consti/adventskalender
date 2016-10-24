@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Importer
   CSV_HEADER = {
     day: "Tag",
@@ -20,7 +21,7 @@ class Importer
 
   def initialize(file_path, year)
     @year = year
-    @csv = CSV.read file_path, headers: true
+    @csv = CSV.read file_path, headers: true, col_sep: ';'
   end
 
   def self.copy_logos!(year)

@@ -2,8 +2,6 @@ source 'https://rubygems.org'
 
 ruby "2.3.1"
 
-gem 'dotenv-rails', :groups => [:development, :test]
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.0.0.1'
 # Use sqlite3 as the database for Active Record
@@ -29,9 +27,6 @@ gem 'turbolinks'
 # gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
-
-gem 'guard',        group: :development
 # gem 'guard-livereload', group: :development
 
 # Use ActiveModel has_secure_password
@@ -47,6 +42,16 @@ gem 'mini_magick'
 gem 'devise'
 gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
 gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
+
+group :development do
+  gem 'pry'
+  gem 'guard'
+end
+
+group :test, :development do
+  gem 'spring'
+  gem 'dotenv-rails'
+end
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

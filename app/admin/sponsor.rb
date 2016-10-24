@@ -18,7 +18,9 @@ ActiveAdmin.register Sponsor do
     column :fax
     column :email
     column :logo do |object|
-      image_tag(object.logo.url(:thumb))
+      if object.logo.present?
+        image_tag(object.logo.url(:thumb))
+      end
     end
     column :prizes do |object|
       link_to(

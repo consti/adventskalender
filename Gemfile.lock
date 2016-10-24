@@ -396,6 +396,7 @@ DEPENDENCIES
   jquery-rails
   mini_magick
   pg
+  pry
   puma
   rails (= 5.0.0.1)
   sass-rails

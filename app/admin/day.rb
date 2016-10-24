@@ -54,6 +54,7 @@ ActiveAdmin.register Day do
   end
 
   action_item(:gesamtliste_herunterladen, only: :index) do
-    link_to 'Gesamtliste herunterladen', params.merge(:action => :download_gesamtliste)
+    {"controller"=>"admin/days", "action"=>"index", "order"=>"id_desc"}
+    link_to 'Gesamtliste herunterladen', params.permit(:controller, :action, :order).merge(action: :download_gesamtliste)
   end
 end
