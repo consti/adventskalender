@@ -2,7 +2,7 @@ class Sponsor < ActiveRecord::Base
   validates :name, :address, :city, :phone, :year, presence: true
 
   mount_uploader :logo, LogoUploader
-  has_many :prizes
+  has_many :prizes, dependent: :destroy
 
   def copy_logo!
     old_sponsor = Sponsor.

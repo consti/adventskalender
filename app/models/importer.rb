@@ -19,9 +19,14 @@ class Importer
     }
   }
 
+  def self.import(year)
+    file_path = Rails.root.join("kalender/#{year}.csv")
+    new(file_path, year).perform!
+  end
+
   def initialize(file_path, year)
     @year = year
-    @csv = CSV.read file_path, headers: true, col_sep: ';'
+    @csv = CSV.read file_path, headers: true, col_sep: ';', encoding: 'utf-8'
   end
 
   def self.copy_logos!(year)
@@ -39,9 +44,14 @@ class Importer
       sponsor = Sponsor.where(
         year: @year,
         name: sponsor_attributes[:name]
-      ).first_or_create
-      sponsor.update_attributes(sponsor_attributes)
-      puts sponsor_attributes[:name] + " created/updated (ID: #{sponsor.id})"
+      ).first_or_initialize
+      sponsor.attributes = sponsor_attributes
+      if sponsor.save
+        puts sponsor_attributes[:name] + " created/updated (ID: #{sponsor.id})"
+      else
+        puts "error: #{sponsor.errors.full_messages.to_sentence}"
+        binding.pry
+      end
     end
   end
 
