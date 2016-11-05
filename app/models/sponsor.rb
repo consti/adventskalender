@@ -7,10 +7,10 @@ class Sponsor < ActiveRecord::Base
   def copy_logo!
     old_sponsor = Sponsor.
                   where.not(year: year, logo: nil).
-                  where("name like '%#{name}%'").
+                  where('name LIKE ?', '%' + name + '%').
                   first
     return unless old_sponsor
     self.remote_logo_url = old_sponsor.logo.url
-    self.save
+    save
   end
 end

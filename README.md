@@ -14,14 +14,12 @@ Alle Jahre wieder
 Import
 =========
 
-```ruby
-data = Tempfile.new('import.csv')
-data.write << <<IMPORT
-[copy and paste all your csv data]
-IMPORT
-data.close
+Create a file named $YEAR$.csv in /kalender (e.g. 2016.csv).
 
-import = Importer.new(data, $YEAR$)
+```ruby
+Day.create_for_year($YEAR$)
+Importer.import($YEAR$)
+Importer.copy_logos!($YEAR$)
 ```
 
 Config
