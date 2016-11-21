@@ -15,7 +15,7 @@ class Day < ActiveRecord::Base
       where('date <= ?', Time.now.in_time_zone('Berlin').to_date)
     end
   }
-  attr_accessor :width, :height, :image, :position
+  attr_accessor :width, :height, :image, :position, :rowspan
 
   def name
     date.to_s

@@ -1,4 +1,4 @@
-td.opened
+= content_tag 'td', class: 'opened', rowspan: day.rowspan do
   = link_to day_path(:id => day.id), :remote => true, class: 'item', style: "height: #{day.height}px; width: #{day.width}px; z-index: #{zindex_from_filename(day.image)}" do
     .info-wrap style="height: #{day.height}px; width: #{day.width}px;"
       .info-opened style= "height: #{day.height}px; width: #{day.width}px;"
@@ -11,5 +11,5 @@ td.opened
         .info-back
           .info-back-sponsors
             - day.sponsors.uniq.each do |sponsor|
-              - if sponsor.logo
+              - if sponsor.logo.present?
                 = image_tag(sponsor.logo.url(:thumb))

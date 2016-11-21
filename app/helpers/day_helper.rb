@@ -1,12 +1,13 @@
 module DayHelper
-  def day_box(image: nil, date: nil, height: nil, width: nil)
+  def day_box(image: nil, date: nil, height: nil, width: nil, rowspan: nil)
     if day = Day.year(ENV['YEAR']).opened.find_by(date: Date.parse(date))
       day.image = image
       day.height = height
       day.width = width
+      day.rowspan = rowspan
       render day
     else
-      content_tag 'td', class: 'disabled', :"data-until" => (Date.parse(date) - Date.today).to_i do
+      content_tag 'td', rowspan: rowspan, class: 'disabled', :"data-until" => (Date.parse(date) - Date.today).to_i do
         image_tag(image, height: height, width: width)
       end
     end
