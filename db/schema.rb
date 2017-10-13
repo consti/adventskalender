@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -17,79 +16,75 @@ ActiveRecord::Schema.define(version: 20151022125839) do
   enable_extension "plpgsql"
 
   create_table "active_admin_comments", force: :cascade do |t|
-    t.string   "namespace"
-    t.text     "body"
-    t.string   "resource_id",   null: false
-    t.string   "resource_type", null: false
-    t.integer  "author_id"
-    t.string   "author_type"
+    t.string "namespace"
+    t.text "body"
+    t.string "resource_id", null: false
+    t.string "resource_type", null: false
+    t.integer "author_id"
+    t.string "author_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
+    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
+    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
-
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "admin_users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
-  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
-
   create_table "days", force: :cascade do |t|
-    t.date     "date"
+    t.date "date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "kalenders", force: :cascade do |t|
-    t.integer  "number",     limit: 8
-    t.integer  "prize_id"
+    t.bigint "number"
+    t.integer "prize_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["prize_id"], name: "index_kalenders_on_prize_id"
   end
-
-  add_index "kalenders", ["prize_id"], name: "index_kalenders_on_prize_id", using: :btree
 
   create_table "prizes", force: :cascade do |t|
-    t.integer  "sponsor_id"
-    t.integer  "day_id"
-    t.string   "name"
+    t.integer "sponsor_id"
+    t.integer "day_id"
+    t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "anzahl"
-    t.integer  "cost"
-    t.string   "lions_member"
+    t.integer "anzahl"
+    t.integer "cost"
+    t.string "lions_member"
+    t.index ["day_id"], name: "index_prizes_on_day_id"
+    t.index ["sponsor_id"], name: "index_prizes_on_sponsor_id"
   end
 
-  add_index "prizes", ["day_id"], name: "index_prizes_on_day_id", using: :btree
-  add_index "prizes", ["sponsor_id"], name: "index_prizes_on_sponsor_id", using: :btree
-
   create_table "sponsors", force: :cascade do |t|
-    t.string   "name"
-    t.string   "person"
-    t.string   "address"
-    t.string   "city"
-    t.string   "phone"
-    t.string   "logo"
+    t.string "name"
+    t.string "person"
+    t.string "address"
+    t.string "city"
+    t.string "phone"
+    t.string "logo"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email"
-    t.string   "fax"
-    t.integer  "year"
+    t.string "email"
+    t.string "fax"
+    t.integer "year"
   end
 
 end
