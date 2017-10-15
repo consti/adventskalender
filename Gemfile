@@ -15,6 +15,8 @@ gem 'coffee-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
+gem "autoprefixer-rails"
+
 gem 'slim'
 
 # Use jquery as the JavaScript library
