@@ -7,6 +7,7 @@
           button class='info-opened-day-winners' Gewinner anzeigen
       .info style="height: #{day.height}px; width: #{day.width}px;"
         .info-front
+          = date_on_door(day.date)
           = image_tag(day.image, height: day.height, width: day.width)
         .info-back
           .info-back-sponsors

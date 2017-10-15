@@ -159,6 +159,26 @@ body {
   .opened {
     outline: 1px dotted black;
   }
+  .disabled {
+    position: relative;
+  }
+}
+
+.date-on-door {
+  position: absolute;
+  z-index: 2;
+  bottom: 5px;
+  right: 15px;
+  color: #FFFFFF;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 3px;
+  &.darken {
+    color: #1d475f;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  &.bold {
+    font-weight: bold;
+  }
 }
 
 .info-opened {
