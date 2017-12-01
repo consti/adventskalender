@@ -1,3 +1,4 @@
  $("#day-winners").html("<%= escape_javascript(render partial: 'day_detail', locals: { day: @day } ) %>");
- $('#kalender').fadeOut()
- $('#day').fadeIn()
+ $('#kalender, #sponsoren_wrapper').fadeOut(function(){
+   $('#day').fadeIn();
+ });

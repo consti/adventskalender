@@ -11,10 +11,13 @@ $(document).ready ->
     if e.keyCode == 27
       $('#day').fadeOut()
       $('#kalender').fadeIn()
+      $('#sponsoren_wrapper').fadeIn()
 
   $('html').click ->
     $('#day').fadeOut()
     $('#kalender').fadeIn()
+    $('#sponsoren_wrapper').fadeIn()
+
 
   $('#day').click (e)->
     e.stopPropagation()
@@ -22,3 +25,4 @@ $(document).ready ->
   $('#day-close').click ->
     $('#day').fadeOut()
     $('#kalender').fadeIn()
+    $('#sponsoren_wrapper').fadeIn()
