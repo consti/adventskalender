@@ -9,6 +9,8 @@
   table#kalender cellpadding="0" cellspacing="0"
     = render partial: "home/kalenders/kalender_#{ ENV['YEAR'] }"
 
+#sponsoren_wrapper
+  = image_tag 'sponsoren.jpg'
 
 - if display_winner_collection?
   = render partial: 'winners'
