@@ -2,6 +2,10 @@
 # dropdb adventskalender_development
 # heroku pg:pull HEROKU_POSTGRESQL_ONYX_URL adventskalender_development
 
+# When all done:
+# heroku pg:reset
+# heroku pg:push adventskalender_development …
+
 year            = 2018
 logos_root      = '/Users/consti/Downloads/logos/'
 sponsors_file   = '/Users/consti/Projects/adventskalender/tools/sponsors.csv'
