@@ -1,5 +1,9 @@
-year       = 2017
-logos_root = '/Users/consti/Downloads/logos/'
+# heroku pg:backups:capture
+# dropdb adventskalender_development
+# heroku pg:pull HEROKU_POSTGRESQL_ONYX_URL adventskalender_development
+
+year            = 2018
+logos_root      = '/Users/consti/Downloads/logos/'
 sponsors_file   = '/Users/consti/Projects/adventskalender/tools/sponsors.csv'
 prizes_file     = '/Users/consti/Projects/adventskalender/tools/prizes.csv'
 # csv.headers
@@ -11,9 +15,11 @@ Kalender.destroy_all
 Day.destroy_all
 Prize.destroy_all
 Day.create_for_year(year)
+Sponsor.update_all(year: year)
 
 # 02 Create Sponsors
 csv = CSV.read(sponsors_file, headers: true, header_converters: %i(symbol downcase))
+missing = []
 csv.each do |row|
   # name
   # person
@@ -31,7 +37,7 @@ csv.each do |row|
     phone: row[:phone],
     fax: row[:fax],
     email: row[:email],
-    logo: File.open(File.join(logos_root, row[:image]))
+    # logo: File.open(File.join(logos_root, "#{row[:name]&.parameterize.underscore}.jpg"))
   )
 end
 

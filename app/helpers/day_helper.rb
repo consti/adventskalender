@@ -1,6 +1,6 @@
 module DayHelper
   BOLD_DAYS     = [24]
-  DARKENED_DAYS = [8, 21, 2, 24, 14, 6, 11, 18, 5, 22]
+  DARKENED_DAYS = []
 
   def day_box(image: nil, date: nil, height: nil, width: nil, rowspan: nil)
     date = Date.parse(date)

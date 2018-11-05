@@ -10,7 +10,7 @@
     = render partial: "home/kalenders/kalender_#{ ENV['YEAR'] }"
 
 #sponsoren_wrapper
-  = image_tag 'sponsoren.jpg'
+  = image_tag "kalenders/#{ENV['YEAR']}/sponsoren.jpg"
 
 - if display_winner_collection?
   = render partial: 'winners'
