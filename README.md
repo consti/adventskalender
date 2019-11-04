@@ -28,6 +28,6 @@ Config
 AWS_ACCESS_KEY_ID:          xxxxxxxxx
 AWS_BUCKET_NAME:            xxxxxxxxx
 AWS_SECRET_ACCESS_KEY:      xxxxxxxxx
-YEAR: 2015
+YEAR: 2019
 ALL_DOORS_OPEN: 'true'
 ```
