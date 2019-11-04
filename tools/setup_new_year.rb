@@ -4,9 +4,9 @@
 
 # When all done:
 # heroku pg:reset
-# heroku pg:push adventskalender_development …
+# heroku pg:push adventskalender_development ….
 
-year            = 2018
+year            = 2019
 logos_root      = '/Users/consti/Downloads/logos/'
 sponsors_file   = '/Users/consti/Projects/adventskalender/tools/sponsors.csv'
 prizes_file     = '/Users/consti/Projects/adventskalender/tools/prizes.csv'
@@ -22,28 +22,28 @@ Day.create_for_year(year)
 Sponsor.update_all(year: year)
 
 # 02 Create Sponsors
-csv = CSV.read(sponsors_file, headers: true, header_converters: %i(symbol downcase))
-missing = []
-csv.each do |row|
-  # name
-  # person
-  # address
-  # city
-  # phone
-  # logo
-  # email
-  # fax
-  # year
-  Sponsor.where(year: year, name: row[:name]).first_or_create(
-    person: row[:person],
-    address: row[:address],
-    city: row[:city],
-    phone: row[:phone],
-    fax: row[:fax],
-    email: row[:email],
-    # logo: File.open(File.join(logos_root, "#{row[:name]&.parameterize.underscore}.jpg"))
-  )
-end
+# csv = CSV.read(sponsors_file, headers: true, header_converters: %i(symbol downcase))
+# missing = []
+# csv.each do |row|
+#   # name
+#   # person
+#   # address
+#   # city
+#   # phone
+#   # logo
+#   # email
+#   # fax
+#   # year
+#   Sponsor.where(year: year, name: row[:name]).first_or_create(
+#     person: row[:person],
+#     address: row[:address],
+#     city: row[:city],
+#     phone: row[:phone],
+#     fax: row[:fax],
+#     email: row[:email],
+#     # logo: File.open(File.join(logos_root, "#{row[:name]&.parameterize.underscore}.jpg"))
+#   )
+# end
 
 # 03 Check for Sponsors
 csv = CSV.read(prizes_file, headers: true, header_converters: %i(symbol downcase))

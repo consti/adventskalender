@@ -1,6 +1,6 @@
 module DayHelper
   BOLD_DAYS     = [24]
-  DARKENED_DAYS = []
+  DARKENED_DAYS = [1, 20, 7, 4, 16, 13, 17, 23, 10, 15, 19, 3, 22]
 
   def day_box(image: nil, date: nil, height: nil, width: nil, rowspan: nil)
     date = Date.parse(date)
@@ -21,7 +21,7 @@ module DayHelper
   end
 
   def zindex_from_filename(filename)
-    100 - filename.match(/(\d\d)\.jpg/)[1].to_i
+    1000 - filename.match(/(\d\d\d?)\.gif/)[1].to_i
   end
 
   def date_on_door(date)
